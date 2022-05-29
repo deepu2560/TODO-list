@@ -15,7 +15,7 @@ export const LoginSignup = () => {
             Sign In
           </p>
           <p
-            style={{ borderTopRightRadius: "0px" }}
+            style={{ borderTopRightRadius: "10px" }}
             onClick={() => setlogin(false)}
           >
             Sign Up
@@ -34,6 +34,7 @@ export const LoginSignup = () => {
                 className="signin-input"
               />
               <br />
+
               <label className="signin-label">PASSWORD</label>
               <br />
               <input
@@ -53,7 +54,7 @@ export const LoginSignup = () => {
           </div>
         ) : (
           <div id="signup-main">
-            <h1>SIGN IN HERE</h1>
+            <h1>SIGN UP HERE</h1>
             <form style={{ marginBottom: "5px" }}>
               <label className="signin-label">USERNAME</label>
               <br />
@@ -61,6 +62,33 @@ export const LoginSignup = () => {
                 type="text"
                 name="username"
                 placeholder="ENTER USERNAME HERE..."
+                className="signin-input"
+              />
+              <br />
+              <label className="signin-label">FULL NAME</label>
+              <br />
+              <input
+                type="text"
+                name="name"
+                placeholder="ENTER NAME HERE..."
+                className="signin-input"
+              />
+              <br />
+              <label className="signin-label">EMAIL ID</label>
+              <br />
+              <input
+                type="text"
+                name="email"
+                placeholder="ENTER EMAIL HERE..."
+                className="signin-input"
+              />
+              <br />
+              <label className="signin-label">MOBILE</label>
+              <br />
+              <input
+                type="text"
+                name="mobile"
+                placeholder="ENTER MOBILE HERE..."
                 className="signin-input"
               />
               <br />
@@ -74,7 +102,7 @@ export const LoginSignup = () => {
               />
             </form>
             <br />
-            <button id="signin-button">SIGN IN</button>
+            <button id="signin-button">SIGN UP</button>
           </div>
         )}
       </div>
