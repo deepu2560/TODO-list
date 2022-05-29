@@ -1,0 +1,31 @@
+#login-signup-main {
+  border: 1px solid black;
+  width: 50%;
+  height: 300px;
+  margin: auto;
+}
+
+#login-signup-heading {
+  display: flex;
+}
+
+#login-signup-heading > p {
+  border: 1px solid red;
+  margin: 0;
+  font-size: x-large;
+  font-weight: bolder;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  width: 50%;
+  padding: 20px 0 20px 0;
+  cursor: pointer;
+}
+
+#login-main {
+  border: 1px solid blue;
+  width: 100%;
+}
+
+#signup-main {
+  border: 1px solid blue;
+  width: 100%;
+}
