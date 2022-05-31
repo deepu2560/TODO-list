@@ -1,0 +1,69 @@
+#navbar-main {
+  display: flex;
+  padding: 0px 20px 0px 20px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid transparent;
+  background-color: black;
+}
+
+#navbar-hadding {
+  font-size: xx-large;
+  font-weight: bolder;
+  margin: 14px;
+  box-sizing: border-box;
+  color: black;
+  position: relative;
+  letter-spacing: 15px;
+  -webkit-text-stroke: 1px #292828;
+}
+
+#navbar-hadding::before {
+  content: attr(data-text);
+  position: absolute;
+  height: 100%;
+  width: 0;
+  top: 0;
+  left: 0;
+  color: #e1e1e1;
+  -webkit-text-stoke: 0px #292828;
+  border-right: 2px solid #e1e1e1;
+  overflow: hidden;
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0%,
+  10%,
+  100% {
+    width: 0;
+  }
+
+  70%,
+  90% {
+    width: 100%;
+  }
+}
+
+#navbar-buttons-profile-main {
+  border: 1px solid transparent;
+  width: 35%;
+  display: flex;
+  justify-content: space-between;
+}
+
+#navbar-routine,
+#navbar-todo-list,
+#navbar-dash-logOut {
+  font-size: x-large;
+  padding: 5px 20px;
+  background-color: transparent;
+  color: #e1e1e1;
+  cursor: pointer;
+}
+
+#navbar-dash-logOut > option {
+  background-color: black;
+  color: #e1e1e1;
+  cursor: pointer;
+}
