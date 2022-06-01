@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import { LoginSignup } from "./Components/Pages/loginSignup";
 import { Navbar } from "./Components/Pages/Navbar";
+import { Todomain } from "./Components/Pages/todo";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -9,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <LoginSignup />
+      <Todomain />
     </div>
   );
 }
