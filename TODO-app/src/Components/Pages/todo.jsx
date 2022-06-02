@@ -1,4 +1,5 @@
 import React from "react";
+import "../Styles/todo.css";
 
 export const Todomain = () => {
   return (
@@ -8,7 +9,7 @@ export const Todomain = () => {
         <input type="text" />
         <button>ADD TODO</button>
       </div>
-      <div>
+      <div id="todo-main-div">
         <div></div>
         <div></div>
         <div></div>

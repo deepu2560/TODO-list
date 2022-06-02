@@ -1,0 +1,13 @@
+#todo-main-div {
+  border: 1px solid black;
+  display: flex;
+  width: 95%;
+  margin: auto;
+  height: 200px;
+  justify-content: space-between;
+}
+
+#todo-main-div > div {
+  border: 1px solid red;
+  width: 30%;
+}
