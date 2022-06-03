@@ -1,9 +1,13 @@
 import React from "react";
+import { Navbar } from "./Navbar";
 
 export const Routine = () => {
   return (
     <div>
-      <h1>Routine</h1>
+      <Navbar />
+      <div>
+        <h1>ROUTINE</h1>
+      </div>
     </div>
   );
 };

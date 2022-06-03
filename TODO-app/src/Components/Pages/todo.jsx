@@ -1,9 +1,11 @@
 import React from "react";
 import "../Styles/todo.css";
+import { Navbar } from "./Navbar";
 
 export const Todomain = () => {
   return (
     <div>
+      <Navbar />
       <h1>TODO list</h1>
       <div id="input-search-main">
         <input type="text" id="input-search" />
