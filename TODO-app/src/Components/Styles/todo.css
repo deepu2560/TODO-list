@@ -1,13 +1,45 @@
 #todo-main-div {
-  border: 1px solid black;
+  border: 1px solid transparent;
   display: flex;
   width: 95%;
   margin: auto;
-  height: 200px;
+  height: 500px;
   justify-content: space-between;
+  margin-top: 20px;
 }
 
 #todo-main-div > div {
-  border: 1px solid red;
+  border: 1px solid transparent;
   width: 30%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #e1e1e1;
+}
+
+.list-main-div {
+  border: 1px solid transparent;
+  height: 87%;
+  text-align: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  overflow-y: scroll;
+}
+
+#input-search {
+  font-size: larger;
+  font-weight: bolder;
+  padding: 5px 10px;
+  border: 2px solid black;
+  border-radius: 20px 0px 0px 20px;
+}
+
+#button-search {
+  font-size: larger;
+  font-weight: bolder;
+  padding: 5px 10px;
+  background-color: transparent;
+  border: 2px solid black;
+  border-left: 0px;
+  border-radius: 0px 20px 20px 0px;
+  cursor: pointer;
+  color: blue;
 }
