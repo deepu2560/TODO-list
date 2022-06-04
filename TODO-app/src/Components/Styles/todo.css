@@ -1,5 +1,5 @@
 #container {
-  background: url("https://images.unsplash.com/photo-1592393377563-504708356873?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80");
+  background: url("https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -19,8 +19,9 @@
 #todo-main-div > div {
   border: 1px solid transparent;
   width: 30%;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.8);
   color: #e1e1e1;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .list-main-div {
