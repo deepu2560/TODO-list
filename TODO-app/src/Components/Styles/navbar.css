@@ -47,23 +47,17 @@
 
 #navbar-buttons-profile-main {
   border: 1px solid transparent;
-  width: 35%;
+  width: 30%;
   display: flex;
   justify-content: space-between;
 }
 
-#navbar-routine,
-#navbar-todo-list,
-#navbar-dash-logOut {
+#navbar-profile,
+#navbar-log-out {
   font-size: x-large;
   padding: 5px 20px;
   background-color: transparent;
   color: #e1e1e1;
   cursor: pointer;
-}
-
-#navbar-dash-logOut > option {
-  background-color: black;
-  color: #e1e1e1;
-  cursor: pointer;
+  border: 1px solid #e1e1e1;
 }

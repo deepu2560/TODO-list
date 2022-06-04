@@ -1,3 +1,11 @@
+#container {
+  background: url("https://images.unsplash.com/photo-1592393377563-504708356873?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1112&q=80");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 753px;
+}
+
 #todo-main-div {
   border: 1px solid transparent;
   display: flex;
@@ -11,7 +19,7 @@
 #todo-main-div > div {
   border: 1px solid transparent;
   width: 30%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   color: #e1e1e1;
 }
 
@@ -30,6 +38,7 @@
   padding: 5px 10px;
   border: 2px solid black;
   border-radius: 20px 0px 0px 20px;
+  background-color: transparent;
 }
 
 #button-search {

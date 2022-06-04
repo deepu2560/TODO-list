@@ -8,12 +8,8 @@ export const Navbar = () => {
         ToDo...
       </h2>
       <div id="navbar-buttons-profile-main">
-        <button id="navbar-routine">Routine</button>
-        <button id="navbar-todo-list">Todo list</button>
-        <select id="navbar-dash-logOut">
-          <option value="dash">Hey! Deepu</option>
-          <option value="lout">Log out</option>
-        </select>
+        <button id="navbar-profile">Hey! Deepanshu</button>
+        <button id="navbar-log-out">LOG OUT</button>
       </div>
     </div>
   );

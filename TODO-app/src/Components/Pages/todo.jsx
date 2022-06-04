@@ -4,12 +4,12 @@ import { Navbar } from "./Navbar";
 
 export const Todomain = () => {
   return (
-    <div>
+    <div id="container">
       <Navbar />
       <h1>TODO list</h1>
       <div id="input-search-main">
         <input type="text" id="input-search" />
-        <button id="button-search">ADD TODO</button>
+        <button id="button-search">ADD EVENT</button>
       </div>
       <div id="todo-main-div">
         <div>

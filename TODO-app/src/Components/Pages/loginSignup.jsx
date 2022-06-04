@@ -7,7 +7,6 @@ export const LoginSignup = () => {
 
   return (
     <div>
-      <Navbar />
       <div id="login-signup-component">
         <div id="login-signup-main">
           <div id="login-signup-heading">
