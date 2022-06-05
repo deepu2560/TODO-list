@@ -20,11 +20,11 @@ const register = async (req, res) => {
 
     const token = new Token(user);
 
-    console.log(`${req.body.name} is registered. token: ${token}`);
+    console.log(`=>> ${req.body.name} is registered. token: ${token}`);
 
     res.status(201).send({ error: false, token });
   } catch (error) {
-    console.log("Registration ERROR", error);
+    console.log("=>> Registration ERROR", error);
     res.status(502).send({ error: true, token: "" });
   }
 };
@@ -47,11 +47,11 @@ const login = async (req, res) => {
 
     const token = newToken(user);
 
-    console.log(`${user.name} is logged in`);
+    console.log(`=>> ${user.name} is logged in`);
 
     res.status().send({ error: false, token });
   } catch (error) {
-    console.log("Registration ERROR", error);
+    console.log("=>> Registration ERROR", error);
     res.status(502).send({ error: true, token: "" });
   }
 };
