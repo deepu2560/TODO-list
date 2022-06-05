@@ -18,7 +18,7 @@ const register = async (req, res) => {
 
     user = await User.create(req.body);
 
-    const token = new Token(user);
+    const token = newToken(user);
 
     console.log(`=>> ${req.body.name} is registered. token: ${token}`);
 
