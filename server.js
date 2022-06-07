@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use("/user", UserController);
+app.use("/auth", UserController);
 
 app.use("/todo", TodoController);
 
@@ -22,7 +22,7 @@ app.listen(process.env.PORT || 8000, async () => {
   try {
     await connect();
 
-    console.log("Server started");
+    console.log(`Server started and port ${process.env.PORT || 8000}`);
   } catch (error) {
     console.log("ERROR", error);
   }

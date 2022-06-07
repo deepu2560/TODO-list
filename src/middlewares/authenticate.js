@@ -17,12 +17,8 @@ module.exports = async (req, res, next) => {
   if (!req.headers.authorization)
     return res.status(400).send({ message: "Token not provided or Invalid" });
 
-  // bearrer token in authorization header
-  if (!req.headers.authorization.startWith("Bearer"))
-    return res.status(400).send({ message: "Token now provied or Invalid" });
-
   // split the bearer token
-  const token = req.headers.authorization.split(" ")[1];
+  const token = req.headers.authorization;
 
   // call jwt to verify
   let user;
