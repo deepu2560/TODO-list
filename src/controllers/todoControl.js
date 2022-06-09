@@ -21,14 +21,11 @@ router.post("/event", Authenticate, async (req, res) => {
 
 router.get("/pending/:id", Authenticate, async (req, res) => {
   try {
-    let event = await Event.find({
-      $and: [
-        { user_id: { $eq: req.params.id } },
-        { progess: { $eq: "pending" } },
-      ],
-    })
-      .lean()
-      .exec();
+    let eventUser = await Event.find({ user_id: req.params.id }).lean().exec();
+
+    let event = eventUser.filter((elem) => {
+      return elem.progress === "pending";
+    });
 
     console.log(`=>> Showing pending progress for ${req.params.id}`);
     res.status(200).send({ error: false, event });
@@ -40,12 +37,11 @@ router.get("/pending/:id", Authenticate, async (req, res) => {
 
 router.get("/doing/:id", Authenticate, async (req, res) => {
   try {
-    let event = await Event.find(
-      { user_id: req.params.id },
-      { progress: "doing" },
-    )
-      .lean()
-      .exec();
+    let eventUser = await Event.find({ user_id: req.params.id }).lean().exec();
+
+    let event = eventUser.filter((elem) => {
+      return elem.progress === "doing";
+    });
 
     console.log(`=>> Showing doing progress for ${req.params.id}`);
     res.status(200).send({ error: false, event });
@@ -57,11 +53,11 @@ router.get("/doing/:id", Authenticate, async (req, res) => {
 
 router.get("/done/:id", Authenticate, async (req, res) => {
   try {
-    let event = await Event.find({
-      $and: [{ user_id: { $eq: req.params.id } }, { progess: { $eq: "done" } }],
-    })
-      .lean()
-      .exec();
+    let eventUser = await Event.find({ user_id: req.params.id }).lean().exec();
+
+    let event = eventUser.filter((elem) => {
+      return elem.progress === "done";
+    });
 
     console.log(`=>> Showing done progress for ${req.params.id}`);
     res.status(200).send({ error: false, event });
