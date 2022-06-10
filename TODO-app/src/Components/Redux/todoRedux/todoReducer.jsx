@@ -18,5 +18,7 @@ export const TodoReducer = (state = initialStore, type, payload) => {
         isLoading: false,
         isFailure: true,
       };
+    default:
+      return state;
   }
 };

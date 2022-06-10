@@ -1,14 +1,11 @@
-import { useState } from "react";
+import React from "react";
 import "./App.css";
-import { LoginSignup } from "./Components/Pages/loginSignup";
-import { Todomain } from "./Components/Pages/todo";
+import { Allroutes } from "./Components/router";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div className="App">
-      <Todomain />
+      <Allroutes />
     </div>
   );
 }

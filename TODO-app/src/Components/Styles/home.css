@@ -1,0 +1,138 @@
+#home-navbar-main {
+  display: flex;
+  padding: 0px 20px 0px 20px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid transparent;
+  background-color: rgb(0, 0, 0);
+  width: 80%;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 10px;
+  position: sticky;
+  top: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+#navbar-hadding {
+  font-size: xx-large;
+  font-weight: bolder;
+  margin: 14px;
+  box-sizing: border-box;
+  color: transparent;
+  position: relative;
+  letter-spacing: 10px;
+  -webkit-text-stroke: 0px #292828;
+}
+
+#navbar-hadding::before {
+  content: attr(data-text);
+  position: absolute;
+  height: 100%;
+  width: 0;
+  top: 0;
+  left: 0;
+  color: #e1e1e1;
+  -webkit-text-stoke: 0px #292828;
+  border-right: 2px solid #e1e1e1;
+  overflow: hidden;
+  animation: animate 6s linear infinite;
+}
+
+@keyframes animate {
+  0%,
+  10%,
+  100% {
+    width: 0;
+  }
+
+  70%,
+  90% {
+    width: 100%;
+  }
+}
+
+#home-navbar-log-in {
+  font-size: x-large;
+  padding: 5px 20px;
+  color: #e1e1e1;
+  cursor: pointer;
+  border-color: #e1e1e1;
+}
+
+#home-quote-img-main {
+  margin-top: -85px;
+  width: auto;
+  height: 750px;
+  background-image: url("https://images.unsplash.com/photo-1535868463750-c78d9543614f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1176&q=80");
+  background-position: 70px -80px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#home-quote-img-main > p {
+  color: #e1e1e1;
+  font-size: xx-large;
+  font-weight: bolder;
+  letter-spacing: 3px;
+  font-family: "Courier New", Courier, monospace;
+}
+
+#home-quote-img-main > p > span {
+  font-weight: normal;
+  color: black;
+  background-color: #e1e1e1;
+}
+
+#main-container {
+  width: 100%;
+  margin: auto;
+}
+
+#home-top-content-div {
+  height: 200px;
+  width: 85%;
+  margin: auto;
+  margin-top: -197px;
+  background-color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#home-top-content-div > div {
+  width: 25%;
+  height: 80%;
+  text-align: center;
+}
+
+#focused,
+#productive {
+  border-left: 2px solid black;
+}
+
+#home-top-content-div > div > p {
+  width: 90%;
+  font-size: large;
+  margin: auto;
+}
+
+.home-content-div {
+  border: 1px solid red;
+  height: 350px;
+  margin-bottom: 2px;
+  margin-top: 0px;
+  background-color: white;
+}
+
+#home-todo-content-div {
+  border: 1px solid blue;
+  height: 550px;
+  margin-bottom: 2px;
+  background-color: white;
+}

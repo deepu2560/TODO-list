@@ -64,5 +64,7 @@ export const AuthReducer = (state = initialStore, { type, payload }) => {
         isAuth: state.isAuth,
         isFailure: true,
       };
+    default:
+      return state;
   }
 };
