@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useCookies } from "react-cookie";
 import "../Styles/loginSignup.css";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +12,7 @@ import {
   signUpFailure,
   signUpSuccess,
 } from "../Redux/authRedux/atuhAction";
+import axios from "axios";
 
 export const LoginSignup = () => {
   document.body.style.background = "none";
@@ -22,7 +24,9 @@ export const LoginSignup = () => {
 
   const [login, setlogin] = useState(true);
   const [remember, setremember] = useState(false);
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const sampleSignin = {
     username: "",
@@ -54,11 +58,50 @@ export const LoginSignup = () => {
   }
 
   function signinSubmit() {
-    console.log(signinData);
+    dispatch(logInLoading());
+
+    setTimeout(() => {
+      axios
+        .post("https://deepu2560-todo-app.herokuapp.com/auth/login", signinData)
+        .then((res) => {
+          let { error, token } = res.data;
+          if (error) {
+            dispatch(logInFailure());
+          } else {
+            dispatch(logInSuccess(token));
+            if (remember) {
+              setCookie("user", token, { path: "/" });
+            }
+            console.log(token);
+            setTimeout(() => {
+              console.clear();
+            }, 100);
+          }
+        });
+    }, 2000);
   }
 
-  function signupSubmit(params) {
-    console.log(signupData);
+  function signupSubmit() {
+    dispatch(signUpLoading());
+    setTimeout(() => {
+      axios
+        .post(
+          "https://deepu2560-todo-app.herokuapp.com/auth/register",
+          signupData,
+        )
+        .then((res) => {
+          let { error, token } = res.data;
+          if (error) {
+            dispatch(signUpFailure());
+          } else {
+            dispatch(signUpSuccess(token));
+            console.log(token);
+            setTimeout(() => {
+              console.clear();
+            }, 100);
+          }
+        });
+    }, 2000);
   }
 
   return (

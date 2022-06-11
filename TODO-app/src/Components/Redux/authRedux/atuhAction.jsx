@@ -13,3 +13,9 @@ export const SIGN_UP_FAILURE = "SIGN_UP_FAILURE";
 export const signUpLoading = () => ({ type: SIGN_UP_LOADING });
 export const signUpSuccess = () => ({ type: SIGN_UP_SUCCESS });
 export const signUpFailure = () => ({ type: SIGN_UP_FAILURE });
+
+export const LOG_OUT_LOADING = "LOG_OUT_LOADING";
+export const LOG_OUT_SUCCESS = "LOG_OUT_SUCCESS";
+
+export const logOutLoading = () => ({ type: LOG_OUT_LOADING });
+export const logOutSuccess = () => ({ type: LOG_OUT_SUCCESS });

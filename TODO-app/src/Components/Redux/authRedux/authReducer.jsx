@@ -5,6 +5,8 @@ import {
   SIGN_UP_FAILURE,
   SIGN_UP_LOADING,
   SIGN_UP_SUCCESS,
+  LOG_OUT_LOADING,
+  LOG_OUT_SUCCESS,
 } from "./atuhAction";
 
 const initialStore = {
@@ -63,6 +65,22 @@ export const AuthReducer = (state = initialStore, { type, payload }) => {
         token: state.token,
         isAuth: state.isAuth,
         isFailure: true,
+      };
+    case LOG_OUT_LOADING:
+      return {
+        ...state,
+        isLoading: true,
+        token: state.token,
+        isAuth: state.isAuth,
+        isFailure: false,
+      };
+    case LOG_OUT_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        token: "",
+        isAuth: false,
+        isFailure: false,
       };
     default:
       return state;
