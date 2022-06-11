@@ -95,4 +95,16 @@ router.put("/:id", Authenticate, async (req, res) => {
   }
 });
 
+router.delete("/:id", Authenticate, async (req, res) => {
+  try {
+    let event = await Event.findByIdAndDelete(req.params.id);
+
+    console.log(`==> Event deleted with id ${req.params.id}`);
+    res.status(200).send({ error: false, event: "event deleted" });
+  } catch (error) {
+    console.log("==> Event delete ERROR", error);
+    res.status(502).send({ error: true, event: "" });
+  }
+});
+
 module.exports = router;
