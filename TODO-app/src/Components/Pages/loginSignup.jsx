@@ -1,12 +1,80 @@
 import React, { useState } from "react";
-import { Navbar } from "./Navbar";
 import "../Styles/loginSignup.css";
+import { Button } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {
+  logInLoading,
+  logInFailure,
+  logInSuccess,
+  signUpLoading,
+  signUpFailure,
+  signUpSuccess,
+} from "../Redux/authRedux/atuhAction";
 
 export const LoginSignup = () => {
+  document.body.style.background = "none";
+  document.body.style.backgroundImage =
+    "url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')";
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundPosition = "center";
+
   const [login, setlogin] = useState(true);
+  const [remember, setremember] = useState(false);
+  const navigate = useNavigate();
+
+  const sampleSignin = {
+    username: "",
+    password: "",
+  };
+
+  const sampleSignup = {
+    username: "",
+    password: "",
+    email: "",
+    mobile: "",
+    name: "",
+  };
+
+  const [signinData, setsigninData] = useState(sampleSignin);
+
+  const [signupData, setsignupData] = useState(sampleSignup);
+
+  function handleSigninChanges({ target }) {
+    const { name, value } = target;
+
+    setsigninData((prev) => ({ ...prev, [name]: value }));
+  }
+
+  function handleSignupChanges({ target }) {
+    const { name, value } = target;
+
+    setsignupData((prev) => ({ ...prev, [name]: value }));
+  }
+
+  function signinSubmit() {
+    console.log(signinData);
+  }
+
+  function signupSubmit(params) {
+    console.log(signupData);
+  }
 
   return (
     <div>
+      <div id="home-navbar-main">
+        <h2 data-text="ToDo..." id="navbar-hadding">
+          ToDo...
+        </h2>
+        <Button
+          variant="outlined"
+          id="home-navbar-log-in"
+          onClick={() => navigate("/")}
+        >
+          HOME
+        </Button>
+      </div>
       <div id="login-signup-component">
         <div id="login-signup-main">
           <div id="login-signup-heading">
@@ -32,8 +100,10 @@ export const LoginSignup = () => {
                 <input
                   type="text"
                   name="username"
+                  defaultValue=""
                   placeholder="ENTER USERNAME HERE..."
                   className="signin-input"
+                  onChange={(event) => handleSigninChanges(event)}
                 />
                 <br />
 
@@ -41,18 +111,31 @@ export const LoginSignup = () => {
                 <br />
                 <input
                   type="password"
-                  name="username"
+                  name="password"
+                  defaultValue=""
                   placeholder="ENTER PASSWORD HERE..."
                   className="signin-input"
+                  onChange={(event) => handleSigninChanges(event)}
                 />
               </form>
               <br />
               <div id="remember-main-div">
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  onChange={() => {
+                    if (remember == false) {
+                      setremember(() => true);
+                      return;
+                    }
+                    setremember(() => false);
+                  }}
+                />
                 <p>REMEMBER ME</p>
               </div>
               <br />
-              <button id="signin-button">SIGN IN</button>
+              <button id="signin-button" onClick={() => signinSubmit()}>
+                SIGN IN
+              </button>
             </div>
           ) : (
             <div id="signup-main">
@@ -65,6 +148,8 @@ export const LoginSignup = () => {
                   name="username"
                   placeholder="ENTER USERNAME HERE..."
                   className="signin-input"
+                  defaultValue=""
+                  onChange={(event) => handleSignupChanges(event)}
                 />
                 <br />
                 <label className="signin-label">FULL NAME</label>
@@ -74,37 +159,47 @@ export const LoginSignup = () => {
                   name="name"
                   placeholder="ENTER NAME HERE..."
                   className="signin-input"
+                  defaultValue=""
+                  onChange={(event) => handleSignupChanges(event)}
                 />
                 <br />
                 <label className="signin-label">EMAIL ID</label>
                 <br />
                 <input
-                  type="text"
+                  type="email"
                   name="email"
                   placeholder="ENTER EMAIL HERE..."
                   className="signin-input"
+                  defaultValue=""
+                  onChange={(event) => handleSignupChanges(event)}
                 />
                 <br />
                 <label className="signin-label">MOBILE</label>
                 <br />
                 <input
-                  type="text"
+                  type="number"
                   name="mobile"
                   placeholder="ENTER MOBILE HERE..."
                   className="signin-input"
+                  defaultValue=""
+                  onChange={(event) => handleSignupChanges(event)}
                 />
                 <br />
                 <label className="signin-label">PASSWORD</label>
                 <br />
                 <input
                   type="password"
-                  name="username"
+                  name="password"
                   placeholder="ENTER PASSWORD HERE..."
                   className="signin-input"
+                  defaultValue=""
+                  onChange={(event) => handleSignupChanges(event)}
                 />
               </form>
               <br />
-              <button id="signin-button">SIGN UP</button>
+              <button id="signin-button" onClick={() => signupSubmit()}>
+                SIGN UP
+              </button>
             </div>
           )}
         </div>
