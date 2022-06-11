@@ -30,12 +30,14 @@ export const Navbar = () => {
           alert("something went wrong try again");
           navigate("/auth");
         } else {
-          setusername(token.username);
+          setusername(() => token.name);
         }
       });
   }
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    finduserName();
+  }, []);
 
   function handlelogOut() {
     dispatch(logOutLoading());
@@ -53,12 +55,10 @@ export const Navbar = () => {
       <h2 data-text="ToDo..." id="navbar-hadding">
         ToDo...
       </h2>
-      <div id="navbar-buttons-profile-main">
-        <button id="navbar-profile">Hey! {username}</button>
-        <button id="navbar-log-out" onClick={() => handlelogOut()}>
-          LOG OUT
-        </button>
-      </div>
+      <button id="navbar-profile">Hey! {username}</button>
+      <button id="navbar-log-out" onClick={() => handlelogOut()}>
+        LOG OUT
+      </button>
     </div>
   );
 };

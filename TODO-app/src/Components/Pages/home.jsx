@@ -1,16 +1,28 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Styles/home.css";
 import { Navigate, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import { useCookies } from "react-cookie";
+import { useDispatch } from "react-redux";
+
+import { logInSuccess } from "../Redux/authRedux/atuhAction";
 
 export const Home = () => {
   document.body.style.background = "none";
   document.body.style.backgroundColor = "black";
 
+  const [cookies, setCookie, removeCookie] = useCookies(["user"]);
   const navigate = useNavigate();
-  function logIn() {
-    return <Navigate to="/auth" />;
-  }
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    let user = cookies.user;
+
+    if (user) {
+      dispatch(logInSuccess(user));
+      navigate("/events");
+    }
+  }, []);
 
   return (
     <div>

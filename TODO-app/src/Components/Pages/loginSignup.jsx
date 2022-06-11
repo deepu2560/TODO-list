@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import "../Styles/loginSignup.css";
 import { Button } from "@mui/material";
@@ -57,6 +57,15 @@ export const LoginSignup = () => {
     setsignupData((prev) => ({ ...prev, [name]: value }));
   }
 
+  useEffect(() => {
+    let user = cookies.user;
+
+    if (user) {
+      dispatch(logInSuccess(user));
+      navigate("/events");
+    }
+  }, []);
+
   function signinSubmit() {
     dispatch(logInLoading());
     console.log("==> logging in");
@@ -114,7 +123,6 @@ export const LoginSignup = () => {
         });
     }, 2000);
   }
-
   return (
     <div>
       <div id="home-navbar-main">

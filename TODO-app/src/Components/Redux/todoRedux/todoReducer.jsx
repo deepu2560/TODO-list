@@ -1,4 +1,4 @@
-import { TODO_LOADING, TODO_FAILURE } from "./todoActions";
+import { TODO_LOADING, TODO_FAILURE, TODO_SUCCESS } from "./todoActions";
 
 const initialStore = {
   isLoading: false,
@@ -15,8 +15,15 @@ export const TodoReducer = (state = initialStore, type, payload) => {
       };
     case TODO_FAILURE:
       return {
+        ...state,
         isLoading: false,
         isFailure: true,
+      };
+    case TODO_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+        isFailure: false,
       };
     default:
       return state;
