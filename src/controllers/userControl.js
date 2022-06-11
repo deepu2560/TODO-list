@@ -4,6 +4,8 @@ require("dotenv").config();
 
 const User = require("../models/usersModels");
 
+const Autenticate = require("../middlewares/authenticate");
+
 const router = express.Router();
 
 const { register, login } = require("../controllers/authControl");
@@ -20,7 +22,7 @@ router.get(`${process.env.USERDATA}`, async (req, res) => {
   }
 });
 
-router.get("/user", autenticate, async (req, res) => {
+router.get("/user", Autenticate, async (req, res) => {
   try {
     const user = req.user;
 

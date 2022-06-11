@@ -79,6 +79,10 @@ export const LoginSignup = () => {
               console.clear();
             }, 100);
           }
+        })
+        .catch((err) => {
+          dispatch(logInFailure());
+          alert("Something went wrong try again");
         });
     }, 2000);
   }
@@ -98,10 +102,15 @@ export const LoginSignup = () => {
           } else {
             dispatch(signUpSuccess(token));
             console.log(token);
+            alert("You are successfully registered. Log in now");
             setTimeout(() => {
               console.clear();
             }, 100);
           }
+        })
+        .catch((err) => {
+          dispatch(signUpFailure());
+          alert("Something went wrong try again");
         });
     }, 2000);
   }
