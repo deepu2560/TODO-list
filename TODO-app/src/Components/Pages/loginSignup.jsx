@@ -59,6 +59,7 @@ export const LoginSignup = () => {
 
   function signinSubmit() {
     dispatch(logInLoading());
+    console.log("==> logging in");
 
     setTimeout(() => {
       axios
@@ -72,8 +73,9 @@ export const LoginSignup = () => {
             if (remember) {
               setCookie("user", token, { path: "/" });
             }
-            console.log(token);
+            console.log("==> logged in");
             setTimeout(() => {
+              navigate("/events");
               console.clear();
             }, 100);
           }
