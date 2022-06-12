@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { logInSuccess } from "./Components/Redux/authRedux/atuhAction";
 import "./App.css";
 import { Allroutes } from "./Components/router";
+import { Modal } from "./Components/Pages/modal";
 
 function App() {
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);

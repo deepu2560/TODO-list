@@ -94,7 +94,7 @@
 
 #home-top-content-div {
   height: 200px;
-  width: 85%;
+  width: 90%;
   margin: auto;
   margin-top: -195px;
   background-color: rgba(255, 255, 255, 0.8);
@@ -103,10 +103,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  letter-spacing: 1px;
 }
 
 #home-top-content-div > div {
-  width: 25%;
+  width: 30%;
   height: 80%;
   text-align: center;
 }
@@ -157,9 +158,52 @@
   line-height: 25px;
 }
 
-#home-todo-content-div {
-  border: 1px solid blue;
-  height: 550px;
-  margin-bottom: 2px;
+#home-todo-content-main-div {
+  width: 98%;
+  margin: auto;
+  border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
   background-color: white;
+}
+
+#home-todo-content-div {
+  letter-spacing: 1px;
+  margin-bottom: 2%;
+}
+
+#home-todo-content-images-div {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+}
+
+#home-todo-content-images-div > img {
+  width: 30%;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#home-footer-div {
+  background-color: #292828;
+  width: 100%;
+  margin: auto;
+  padding: 10px 0 10px 0;
+  margin-top: 2%;
+  color: #e1e1e1;
+  padding-bottom: 50px;
+}
+
+#home-footer-div > hr {
+  width: 15%;
+  margin: auto;
+}
+
+#home-footer-icons {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  justify-content: center;
 }

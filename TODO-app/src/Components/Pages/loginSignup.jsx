@@ -3,7 +3,7 @@ import { useCookies } from "react-cookie";
 import "../Styles/loginSignup.css";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   logInLoading,
   logInFailure,
@@ -40,6 +40,8 @@ export const LoginSignup = () => {
     mobile: "",
     name: "",
   };
+
+  const { isAuth } = useSelector((state) => state.auth);
 
   const [signinData, setsigninData] = useState(sampleSignin);
 

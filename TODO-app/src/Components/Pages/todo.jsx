@@ -16,18 +16,26 @@ import {
 } from "../Redux/todoRedux/todoActions";
 
 export const Todomain = () => {
-  const { isAuth } = useSelector((state) => state.auth);
+  document.body.style.background = "none";
+  document.body.style.backgroundImage =
+    "url('https://images.unsplash.com/photo-1543286386-713bdd548da4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80')";
+  document.body.style.backgroundSize = "cover";
+  document.body.style.backgroundRepeat = "no-repeat";
+  document.body.style.backgroundPosition = "center";
+
+  const { isAuth, token } = useSelector((state) => state.auth);
   const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
   const [pendingData, setpendingData] = useState([]);
   const [doingData, setdoingData] = useState([]);
   const [doneData, setdoneData] = useState([]);
+  const [inputData, setinputData] = useState("");
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   let user = cookies.user;
-  if (!user) {
+  if (!user && !isAuth) {
     return <Navigate to="/" />;
   }
 
@@ -36,18 +44,18 @@ export const Todomain = () => {
     setTimeout(() => {
       userfetch();
     }, 2000);
-  }, []);
+  }, [token]);
 
   function userfetch() {
     let user = cookies.user;
-    if (!user) {
+    if (!user && !isAuth) {
       navigate("/auth");
     }
 
     axios
       .get("https://deepu2560-todo-app.herokuapp.com/auth/user", {
         headers: {
-          authorization: user,
+          authorization: token,
         },
       })
       .then((res) => {
@@ -70,7 +78,7 @@ export const Todomain = () => {
     axios
       .get(`https://deepu2560-todo-app.herokuapp.com/todo/pending/${userid}`, {
         headers: {
-          authorization: user,
+          authorization: token,
         },
       })
       .then((res) => {
@@ -91,7 +99,7 @@ export const Todomain = () => {
     axios
       .get(`https://deepu2560-todo-app.herokuapp.com/todo/doing/${userid}`, {
         headers: {
-          authorization: user,
+          authorization: token,
         },
       })
       .then((res) => {
@@ -112,7 +120,7 @@ export const Todomain = () => {
     axios
       .get(`https://deepu2560-todo-app.herokuapp.com/todo/done/${userid}`, {
         headers: {
-          authorization: user,
+          authorization: token,
         },
       })
       .then((res) => {
@@ -128,14 +136,14 @@ export const Todomain = () => {
 
   function pendingToDoing(id) {
     let user = cookies.user;
-    if (!user) {
+    if (!user && !isAuth) {
       navigate("/auth");
     }
 
     axios
       .put(`https://deepu2560-todo-app.herokuapp.com/todo/${id}`, {
         headers: {
-          authorization: user,
+          authorization: token,
         },
         body: JSON.stringify({
           progress: "doing",
@@ -158,14 +166,14 @@ export const Todomain = () => {
 
   function doingToDone(id) {
     let user = cookies.user;
-    if (!user) {
+    if (!user && !isAuth) {
       navigate("/auth");
     }
 
     axios
       .put(`https://deepu2560-todo-app.herokuapp.com/todo/${id}`, {
         headers: {
-          authorization: user,
+          authorization: token,
         },
         body: JSON.stringify({
           progress: "done",
@@ -195,7 +203,7 @@ export const Todomain = () => {
     axios
       .delete(`https://deepu2560-todo-app.herokuapp.com/todo/${id}`, {
         headers: {
-          authorization: user,
+          authorization: token,
         },
       })
       .then((res) => {
@@ -212,7 +220,40 @@ export const Todomain = () => {
       });
   }
 
-  if (isAuth == false) {
+  function handleEventChange(target) {
+    const { value } = target;
+
+    setinputData(() => value);
+  }
+
+  function newEvent(key) {
+    axios
+      .post("https://deepu2560-todo-app.herokuapp.com/todo/event", {
+        headers: {
+          authorization: token,
+        },
+        body: JSON.stringify({
+          user_id: key,
+          event: inputData,
+          progress: "pending",
+        }),
+      })
+      .then((res) => {
+        let { error, event } = res.data;
+
+        if (error) {
+          dispatch(todoFailure());
+        } else {
+          dispatch(todoSuccess());
+          userfetch();
+        }
+      })
+      .catch((err) => {
+        dispatch(todoFailure());
+      });
+  }
+
+  if (!isAuth) {
     return <Navigate to="/" />;
   }
 
@@ -221,8 +262,37 @@ export const Todomain = () => {
       <Navbar />
       <h1>TODO list</h1>
       <div id="input-search-main">
-        <input type="text" id="input-search" />
-        <button id="button-search">ADD EVENT</button>
+        <input
+          type="text"
+          id="input-search"
+          onChange={(event) => handleEventChange(event.target)}
+        />
+        <button
+          id="button-search"
+          onClick={() => {
+            dispatch(todoLoading());
+            axios
+              .get("https://deepu2560-todo-app.herokuapp.com/auth/user", {
+                headers: {
+                  authorization: token,
+                },
+              })
+              .then((res) => {
+                let { error, token } = res.data;
+
+                if (error) {
+                  dispatch(todoFailure());
+                } else {
+                  newEvent(token._id);
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          }}
+        >
+          ADD EVENT
+        </button>
       </div>
       <div id="todo-main-div">
         <div>
