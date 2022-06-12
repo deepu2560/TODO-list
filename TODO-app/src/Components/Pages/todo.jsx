@@ -142,12 +142,7 @@ export const Todomain = () => {
 
     axios
       .put(`https://deepu2560-todo-app.herokuapp.com/todo/${id}`, {
-        headers: {
-          authorization: token,
-        },
-        body: JSON.stringify({
-          progress: "doing",
-        }),
+        progress: "doing",
       })
       .then((res) => {
         let { error, event } = res.data;
@@ -172,12 +167,7 @@ export const Todomain = () => {
 
     axios
       .put(`https://deepu2560-todo-app.herokuapp.com/todo/${id}`, {
-        headers: {
-          authorization: token,
-        },
-        body: JSON.stringify({
-          progress: "done",
-        }),
+        progress: "done",
       })
       .then((res) => {
         let { error, event } = res.data;
@@ -229,14 +219,9 @@ export const Todomain = () => {
   function newEvent(key) {
     axios
       .post("https://deepu2560-todo-app.herokuapp.com/todo/event", {
-        headers: {
-          authorization: token,
-        },
-        body: JSON.stringify({
-          user_id: key,
-          event: inputData,
-          progress: "pending",
-        }),
+        user_id: key,
+        event: inputData,
+        progress: "pending",
       })
       .then((res) => {
         let { error, event } = res.data;

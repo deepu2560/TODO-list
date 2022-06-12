@@ -79,7 +79,7 @@ router.get("/:id", Authenticate, async (req, res) => {
   }
 });
 
-router.put("/:id", Authenticate, async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     let event = await Event.findByIdAndUpdate(req.params.id, {
       $set: { progress: req.body.progress },
@@ -95,7 +95,7 @@ router.put("/:id", Authenticate, async (req, res) => {
   }
 });
 
-router.delete("/:id", Authenticate, async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     let event = await Event.findByIdAndDelete(req.params.id);
 
