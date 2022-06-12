@@ -6,7 +6,7 @@ const Authenticate = require("../middlewares/authenticate");
 
 const router = express.Router();
 
-router.post("/event", Authenticate, async (req, res) => {
+router.post("/event", async (req, res) => {
   try {
     let event = await Event.create(req.body);
 
