@@ -151,6 +151,7 @@ export const Todomain = () => {
           dispatch(todoFailure());
         } else {
           dispatch(todoSuccess());
+          userfetch();
         }
       })
       .catch((err) => {
@@ -203,6 +204,7 @@ export const Todomain = () => {
           dispatch(todoFailure());
         } else {
           dispatch(todoSuccess());
+          userfetch();
         }
       })
       .catch((err) => {
