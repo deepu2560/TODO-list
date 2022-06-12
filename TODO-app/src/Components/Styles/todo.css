@@ -53,3 +53,21 @@
   cursor: pointer;
   color: blue;
 }
+
+.event-display-main-div {
+  width: 95%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.event-display-main-div > p {
+  color: #e1e1e1;
+  text-align: left;
+  font-size: large;
+  font-weight: bold;
+  letter-spacing: 1px;
+  width: 70%;
+}
